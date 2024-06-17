@@ -15,3 +15,14 @@ export class CurrencyModel {
         this.CurrencyRate = 0;
     }
 }
+
+
+
+export class CurrencyRate {
+
+    constructor(
+        currencyName: string,
+        currencyRate: number) { }
+
+
+}
