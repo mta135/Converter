@@ -18,7 +18,7 @@ export class CurrencyModel {
 
 
 
-export class CurrencyRate {
+export class CurrencyRateModel {
 
     constructor(
         currencyName: string,
