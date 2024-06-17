@@ -1,4 +1,4 @@
-import { Currency } from "../Model/Currency";
+import { Currency } from "../model/currency.model";
 
 export class Helpers {
 

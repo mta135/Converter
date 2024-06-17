@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../../Helpers/material.module';
-import { CurrencyService } from '../../Services/currency.service';
-import { Currency, CurrencyModel } from '../../Model/Currency';
-import { Helpers } from '../../Helpers/ConvertHelpers';
+import { MaterialModule } from '../../helpers/material.module';
+import { CurrencyService } from '../../services/currency.service';
+import { Currency, CurrencyModel } from '../../model/currency.model';
+import { Helpers } from '../../helpers/ConvertHelpers';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
@@ -25,10 +25,7 @@ export class ConverterComponent implements OnInit {
 
   selectedValue: undefined;
 
-
-
   constructor(private service: CurrencyService, private builder: FormBuilder) { }
-
 
   currencyForm = this.builder.group({
     currencyFrom: new FormControl(),
