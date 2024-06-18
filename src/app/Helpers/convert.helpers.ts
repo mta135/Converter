@@ -12,14 +12,4 @@ export class Helpers {
         }
         return tempCurrency;
     }
-
-
-
-    // public SetDefaultCurrencyRates(name: string, currencies: Currency[]): Currency[] {
-    //     let tempCurrency: Currency[] = [];
-    //     let rate = currencies.find(x => x.CurrencyName == name)?.CurrencyRate;
-
-    //     return tempCurrency;
-    // }
-
 }

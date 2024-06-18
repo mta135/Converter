@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../helpers/material.module';
 import { CurrencyService } from '../../services/currency.service';
 import { Currency, CurrencyModel } from '../../model/currency.model';
-import { Helpers } from '../../helpers/ConvertHelpers';
+import { Helpers } from '../../helpers/convert.helpers';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
