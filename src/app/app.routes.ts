@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { ConverterComponent } from './component/converter/converter.component';
+import { ConvertComponent } from './convert/convert.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'converter', pathMatch: 'full' },
-    { path: 'converter', component: ConverterComponent }
+    { path: '', redirectTo: 'convert', pathMatch: 'full' },
+    { path: 'convert', component: ConvertComponent }
 ];

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../helper/material.module';
-import { CurrencyService } from '../../Services/currency.service';
+
 import { Currency, CurrencyModel } from '../../model/currency.model';
 import { Helper } from '../../helper/convert.helper';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CurrencyService } from '../../model/currency.service';
 
 
 @Component({
