@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MaterialModule } from "../helper/material.module";
+import { MaterialModule } from "../../helper/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 export class ConvertComponent {
 
     TestClick() {
-
+        alert("This is an alert...")
     }
 
 }

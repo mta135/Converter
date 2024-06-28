@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Currency, CurrencyRate } from "./currency.model";
-import { CurrencyRateService } from "./currencyrate.service";
+
 import { Helper } from "../helper/convert.helper";
+import { CurrencyRate } from "../models/currencyrate/currencyrate.model";
+import { CurrencyRateService } from "../services/currencyrate.service";
 
 
 @Injectable()

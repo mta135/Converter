@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../helper/material.module';
 
-import { Currency, CurrencyModel } from '../../model/currency.model';
-import { Helper } from '../../helper/convert.helper';
+import { Currency, CurrencyModel } from '../../models/currencyrate/currencyrate.model';
+
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CurrencyService } from '../../model/currency.service';
+
 
 
 @Component({
@@ -28,7 +28,7 @@ export class ConverterComponent implements OnInit {
 
 
 
-  constructor(private service: CurrencyService, private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder) { }
 
 
   currencyForm = this.builder.group({
@@ -45,10 +45,10 @@ export class ConverterComponent implements OnInit {
 
 
   private BindCurrencyDropDown(): void {
-    this.service.GetCurrencyRates().subscribe(data => {
-      const convertHelper = new Helper();
-      this.currencies = convertHelper.SetCurrency(data);
-    });
+    // this.service.GetCurrencyRates().subscribe(data => {
+    //   const convertHelper = new Helper();
+    //   this.currencies = convertHelper.SetCurrency(data);
+    // });
   }
 
 
