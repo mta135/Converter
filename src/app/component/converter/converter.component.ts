@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../../helpers/material.module';
-import { CurrencyService } from '../../services/currency.service';
+import { MaterialModule } from '../../helper/material.module';
+import { CurrencyService } from '../../Services/currency.service';
 import { Currency, CurrencyModel } from '../../model/currency.model';
-import { Helpers } from '../../helpers/convert.helpers';
+import { Helper } from '../../helper/convert.helper';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
@@ -25,7 +25,10 @@ export class ConverterComponent implements OnInit {
 
   selectedValue: undefined;
 
+
+
   constructor(private service: CurrencyService, private builder: FormBuilder) { }
+
 
   currencyForm = this.builder.group({
     currencyFrom: new FormControl(),
@@ -42,7 +45,7 @@ export class ConverterComponent implements OnInit {
 
   private BindCurrencyDropDown(): void {
     this.service.GetCurrencyRates().subscribe(data => {
-      const convertHelper = new Helpers();
+      const convertHelper = new Helper();
       this.currencies = convertHelper.SetCurrency(data);
     });
   }
@@ -56,13 +59,7 @@ export class ConverterComponent implements OnInit {
     debugger;
 
     var name = this.currencies.find(x => x.CurrencyName == 'USD')?.CurrencyName;
-
     this.currencyForm.controls['currencyTest'].setValue(name);
-
-
-    // this.TesCurrencyModel = this.SetTestCurrency();
-    // this.currencyForm.controls['currencyTest'].setValue(this.TesCurrencyModel);
-
   }
 
 

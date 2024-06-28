@@ -1,3 +1,5 @@
+//#region Nu stiu daca pe viitor se vor folosi aceste clase...
+
 export interface Currency {
     CurrencyRate: number;
     CurrencyName: string;
@@ -16,13 +18,11 @@ export class CurrencyModel {
     }
 }
 
+//#endregion
 
 
-export class CurrencyRateModel {
-
-    constructor(
-        currencyName: string,
-        currencyRate: number) { }
-
+// clasa care se va folosi ...
+export class CurrencyRate {
+    constructor(CurrencyRate: number, CurrencyName: string) { }
 
 }
