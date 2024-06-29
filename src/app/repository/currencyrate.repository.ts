@@ -5,7 +5,10 @@ import { CurrencyRate } from "../models/currencyrate/currencyrate.model";
 import { CurrencyRateService } from "../services/currencyrate.service";
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root' // This makes the service available throughout the application
+})
+
 export class CurrencyRateRepository {
 
     private currencyRates: CurrencyRate[] = [];

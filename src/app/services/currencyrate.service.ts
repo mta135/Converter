@@ -4,7 +4,10 @@ import { Observable } from "rxjs";
 
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root' // This makes the service available throughout the application
+})
+
 export class CurrencyRateService {
 
     constructor(private http: HttpClient) { }
