@@ -2,10 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-
-
 @Injectable({
-    providedIn: 'root' // This makes the service available throughout the application
+    providedIn: 'root'
 })
 
 export class CurrencyRateService {

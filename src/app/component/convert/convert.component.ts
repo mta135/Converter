@@ -11,7 +11,7 @@ import { CurrencyRateService } from "../../services/currencyrate.service";
     standalone: true,
     styleUrl: './convert.component.scss',
     imports: [MaterialModule, FormsModule, ReactiveFormsModule],
-    providers: [CurrencyRateRepository, CurrencyRateService]
+    providers: [CurrencyRateRepository]
 })
 
 export class ConvertComponent {
