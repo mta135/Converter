@@ -15,15 +15,15 @@ import { CurrencyRate } from "../../models/currencyrate/currencyrate.model";
 
 export class ConvertComponent {
 
-    constructor(private currencyRate: CurrencyRateRepository) { }
+    constructor(private currencyRateRepository: CurrencyRateRepository) { }
 
     get currencyRates(): CurrencyRate[] {
-        return this.currencyRate.GetCurrencyRates();
+        return this.currencyRateRepository.GetCurrencyRates();
     }
 
     TestClick() {
         debugger;
-        var value = this.currencyRate.GetCurrencyRates();
+        var value = this.currencyRateRepository.GetCurrencyRates();
         alert("This is an alert...")
     }
 
