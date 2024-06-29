@@ -3,7 +3,6 @@ import { MaterialModule } from "../../helper/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
 import { CurrencyRate } from "../../models/currencyrate/currencyrate.model";
-import { CurrencyRateService } from "../../services/currencyrate.service";
 
 @Component({
     selector: "convert",
