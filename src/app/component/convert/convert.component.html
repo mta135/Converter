@@ -41,75 +41,32 @@
                 </div>
             </div>
             <div class="row mt-3">
-                <!-- <div class="col-md-6">
+                <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
                         <mat-select formControlName="currencyFrom">
-                            @for (currency of currencies; track currency) {
+                            @for (currency of currencyRates; track currency) {
                             <mat-option [value]="currency.CurrencyRate">{{currency.CurrencyName}}</mat-option>
                             }
                         </mat-select>
                     </mat-form-field>
-                </div> -->
+                </div>
 
-                <!-- <div class="col-md-6">
+                <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
                         <mat-select formControlName="currencyTo">
-                            @for (currency of currencies; track currency) {
+                            @for (currency of currencyRates; track currency) {
                             <mat-option [value]="currency.CurrencyRate">{{currency.CurrencyName}}</mat-option>
                             }
                         </mat-select>
                     </mat-form-field>
-                </div> -->
+                </div>
             </div>
-
-            <!-- <div class="row">
-                <hr />
-                <div class="col-md-12">
-                    <mat-form-field class="mat-100-percent">
-                        <mat-select formControlName="currencyTest">
-                            @for (currency of TesCurrencyModel; track currency) {
-                            <mat-option [value]="currency.CurrencyRate">{{currency.CurrencyName}}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div> -->
-
-
-
-
-            <!-- <div class="row">
-                <hr />
-                <div class="col-md-12">
-                    <mat-form-field class="mat-100-percent" formControlName="currencyTest">
-                        <select matNativeControl required>
-                            @for (item of TesCurrencyModel; track item) {
-                            <option [ngValue]=" +item.CurrencyRate"> {{item.CurrencyName}} </option>
-                            }
-
-                        </select>
-                    </mat-form-field>
-                </div>
-
-            </div> -->
-
-
-
-
-
-
 
             <div class="row">
                 <div class="col-md-4">
                     <button mat-raised-button color="accent" (click)="TestClick()">Accent Test</button>
                 </div>
             </div>
-
-
-
-
-
-
 
         </form>
 
