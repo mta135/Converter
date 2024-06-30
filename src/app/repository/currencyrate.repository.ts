@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 
-import { Helper } from "../helper/convert.helper";
-import { CurrencyRate } from "../models/currencyrate/currencyrate.model";
 import { CurrencyRateService } from "../services/currencyrate.service";
+import { Observable } from "rxjs";
 
 
 @Injectable({
@@ -11,19 +10,9 @@ import { CurrencyRateService } from "../services/currencyrate.service";
 
 export class CurrencyRateRepository {
 
-    private currencyRates: CurrencyRate[] = [];
+    constructor(private service: CurrencyRateService) { }
 
-    constructor(service: CurrencyRateService) {
-        service.GetCurrencyRates().subscribe(data => {
-
-            var helper = new Helper();
-            this.currencyRates = helper.SetCurrencyRate(data);
-        });
+    public GetCurrencyRates(): Observable<any> {
+        return this.service.GetCurrencyRates();
     }
-
-    GetCurrencyRates(): CurrencyRate[] {
-        return this.currencyRates;
-    }
-
-
 }

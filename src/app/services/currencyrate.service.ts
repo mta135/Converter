@@ -10,7 +10,7 @@ export class CurrencyRateService {
 
     constructor(private http: HttpClient) { }
 
-    GetCurrencyRates(): Observable<any> {
+    public GetCurrencyRates(): Observable<any> {
         return this.http.get('https://open.er-api.com/v6/latest/EUR');
     }
 

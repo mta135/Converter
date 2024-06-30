@@ -3,6 +3,7 @@ import { MaterialModule } from "../../helper/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
 import { CurrencyRate } from "../../models/currencyrate/currencyrate.model";
+import { Helper } from "../../helper/convert.helper";
 
 @Component({
     selector: "convert",
@@ -15,18 +16,24 @@ import { CurrencyRate } from "../../models/currencyrate/currencyrate.model";
 
 export class ConvertComponent {
 
-    constructor(private currencyRateRepository: CurrencyRateRepository) { }
+    public currencyRates: CurrencyRate[] = [];
 
-    get currencyRates(): CurrencyRate[] {
-        return this.currencyRateRepository.GetCurrencyRates();
+    constructor(currencyRateRepository: CurrencyRateRepository) {
+        this.SetCurrencyRates(currencyRateRepository);
+    }
+
+
+    private SetCurrencyRates(currencyRateRepository: CurrencyRateRepository): void {
+        currencyRateRepository.GetCurrencyRates().subscribe(data => {
+
+            var helper = new Helper();
+            this.currencyRates = helper.ConvertToCurrencyRates(data);
+        });
     }
 
     TestClick() {
-        debugger;
-        var value = this.currencyRateRepository.GetCurrencyRates();
         alert("This is an alert...")
     }
-
 }
 
 
