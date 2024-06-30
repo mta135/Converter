@@ -15,4 +15,7 @@ export class CurrencyRateRepository {
     public GetCurrencyRates(): Observable<any> {
         return this.service.GetCurrencyRates();
     }
+
+
+    // comments
 }
