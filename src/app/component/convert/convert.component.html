@@ -27,15 +27,16 @@
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
 
-                        <input matInput [(ngModel)]="fromCurrency" name="fromCurrency" [value]="fromCurrency"
-                            (input)="fromCurrency=GetFromCurrencyValue($event)">
+                        <input matInput [(ngModel)]="convertModel.fromCurrency" name="fromCurrency"
+                            [value]="convertModel.fromCurrency"
+                            (input)="convertModel.fromCurrency=GetFromCurrencyValue($event)">
 
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
 
-                        <input matInput [(ngModel)]="toCurrency" name="toCurrency"
+                        <input matInput [(ngModel)]="convertModel.toCurrency" name="toCurrency"
                             (ngModelChange)="GetToCurrency($event)">
 
                     </mat-form-field>
@@ -52,9 +53,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
-                        <mat-select [(value)]="FromDefaultId" placeholder="Mode" [(ngModel)]="fromCurrencyId"
-                            name="fromCurrencyId" (selectionChange)="onFoodSelection1()">
-                            @for (currency of currencyRates; track currency) {
+                        <mat-select [(value)]="convertModel.FromDefaultId" placeholder="Mode"
+                            [(ngModel)]="convertModel.fromCurrencyId" name="fromCurrencyId"
+                            (selectionChange)="onFoodSelection1()">
+
+                            @for (currency of convertModel.currencyRates; track currency) {
                             <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>
                             }
                         </mat-select>
@@ -63,9 +66,10 @@
 
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
-                        <mat-select [(value)]="ToDefaultId" placeholder="Mode" [(ngModel)]="toCurrencyId"
-                            name="toCurrencyId">
-                            @for (currency of currencyRates; track currency) {
+                        <mat-select [(value)]="convertModel.ToDefaultId" placeholder="Mode"
+                            [(ngModel)]="convertModel.toCurrencyId" name="toCurrencyId">
+
+                            @for (currency of convertModel.currencyRates; track currency) {
                             <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>
                             }
                         </mat-select>

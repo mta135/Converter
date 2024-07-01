@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
 import { CurrencyRate } from "../../models/currencyrate/currencyrate.model";
 import { Helper } from "../../helper/convert.helper";
+import { ConvertModel } from "../../models/convert/convert.model";
 
 @Component({
     selector: "convert",
@@ -16,15 +17,7 @@ import { Helper } from "../../helper/convert.helper";
 
 export class ConvertComponent {
 
-    public currencyRates: CurrencyRate[] = [];
-    public FromDefaultId: number | undefined;
-    public ToDefaultId: number | undefined;
-
-    public fromCurrency: string = "";
-    public toCurrency: string = "";
-
-    public fromCurrencyId: string = "";
-    public toCurrencyId: string = "";
+    public convertModel = new ConvertModel();
 
     constructor(currencyRateRepository: CurrencyRateRepository) {
         this.SetCurrencyRates(currencyRateRepository);
@@ -34,33 +27,32 @@ export class ConvertComponent {
         currencyRateRepository.GetCurrencyRates().subscribe(data => {
 
             var helper = new Helper();
-            this.currencyRates = helper.ConvertToCurrencyRates(data);
-            this.SetRatesDefaultValues(this.currencyRates);
+            this.convertModel.currencyRates = helper.ConvertToCurrencyRates(data);
+            this.SetRatesDefaultValues(this.convertModel.currencyRates);
         });
     }
 
     private SetRatesDefaultValues(currencyRate: CurrencyRate[]): void {
         var helper = new Helper();
 
-        this.FromDefaultId = helper.GetCurrencyRateId(currencyRate, "EUR");
-        this.ToDefaultId = helper.GetCurrencyRateId(currencyRate, "MDL");
+        this.convertModel.FromDefaultId = helper.GetCurrencyRateId(currencyRate, "EUR");
+        this.convertModel.ToDefaultId = helper.GetCurrencyRateId(currencyRate, "MDL");
     }
 
     TestClick() {
         debugger;
-        var aaa = this.fromCurrencyId;
-        alert("This is an alert..." + this.currencyRates)
+        var aaa = this.convertModel.fromCurrencyId;
+        alert("This is an alert..." + this.convertModel.currencyRates)
     }
 
-    GetFromCurrency(fromCurrency: string) {
-        console.log(fromCurrency);
-    }
 
     GetToCurrency(toCurrency: string) {
+        debugger;
         console.log(toCurrency);
     }
 
     GetFromCurrencyValue(event: Event): string {
+        debugger;
         var value = (event.target as HTMLInputElement).value;
 
         console.log(value);
@@ -68,8 +60,8 @@ export class ConvertComponent {
     }
     onFoodSelection1() {
         debugger;
-        var vaalue = this.currencyRates;
-        console.log(this.fromCurrencyId);
+        var vaalue = this.convertModel.currencyRates;
+        console.log(this.convertModel.fromCurrencyId);
     }
 
 }
