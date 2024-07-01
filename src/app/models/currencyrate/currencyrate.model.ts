@@ -1,27 +1,14 @@
 
 export class CurrencyRate {
-    private currencyRate: number;
-    private currencyName: string;
+
+    public Id: number;
+    public CurrencyRate: number;
+    public CurrencyName: string;
 
     constructor() {
-        this.currencyRate = 0;
-        this.currencyName = "";
-    }
-
-    get CurrencyName(): string {
-        return this.currencyName;
-    }
-
-    get CurrencyRate(): number {
-        return this.currencyRate
-    }
-
-    set CurrencyName(value: string) {
-        this.currencyName = value;
-    }
-
-    set CurrencyRate(value: number) {
-        this.currencyRate = value;
+        this.CurrencyRate = 0;
+        this.CurrencyName = "";
+        this.Id = 0;
     }
 
 }

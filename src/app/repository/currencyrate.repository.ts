@@ -11,7 +11,6 @@ import { Observable } from "rxjs";
 export class CurrencyRateRepository {
 
     constructor(private service: CurrencyRateService) { }
-
     public GetCurrencyRates(): Observable<any> {
         return this.service.GetCurrencyRates();
     }

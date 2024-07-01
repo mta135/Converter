@@ -19,16 +19,25 @@
 
         <form>
             <div class="row">
+                <div class="col-md-4">
+                    <label>Introdu suma...</label>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
-                        <mat-label>Current</mat-label>
-                        <input matInput>
+
+                        <input matInput [(ngModel)]="fromCurrency" name="fromCurrency" [value]="fromCurrency"
+                            (input)="fromCurrency=GetFromCurrencyValue($event)">
+
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
-                        <mat-label>Current</mat-label>
-                        <input matInput>
+
+                        <input matInput [(ngModel)]="toCurrency" name="toCurrency"
+                            (ngModelChange)="GetToCurrency($event)">
+
                     </mat-form-field>
                 </div>
             </div>
@@ -40,12 +49,13 @@
                     <label>Currency</label>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row">
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
-                        <mat-select>
+                        <mat-select [(value)]="FromDefaultId" placeholder="Mode" [(ngModel)]="fromCurrencyId"
+                            name="fromCurrencyId" (selectionChange)="onFoodSelection1()">
                             @for (currency of currencyRates; track currency) {
-                            <mat-option [value]="currency.CurrencyRate">{{currency.CurrencyName}}</mat-option>
+                            <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>
                             }
                         </mat-select>
                     </mat-form-field>
@@ -53,9 +63,10 @@
 
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
-                        <mat-select>
+                        <mat-select [(value)]="ToDefaultId" placeholder="Mode" [(ngModel)]="toCurrencyId"
+                            name="toCurrencyId">
                             @for (currency of currencyRates; track currency) {
-                            <mat-option [value]="currency.CurrencyRate">{{currency.CurrencyName}}</mat-option>
+                            <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>
                             }
                         </mat-select>
                     </mat-form-field>
@@ -67,7 +78,6 @@
                     <button mat-raised-button color="accent" (click)="TestClick()">Accent Test</button>
                 </div>
             </div>
-
         </form>
 
     </mat-card-content>
