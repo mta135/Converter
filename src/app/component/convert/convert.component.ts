@@ -29,6 +29,7 @@ export class ConvertComponent {
             var helper = new Helper();
             this.convertModel.currencyRates = helper.ConvertToCurrencyRates(data);
             this.SetRatesDefaultValues(this.convertModel.currencyRates);
+            console.log(this.convertModel.currencyRates);
         });
     }
 
@@ -41,27 +42,63 @@ export class ConvertComponent {
 
     TestClick() {
         debugger;
-        var aaa = this.convertModel.fromCurrencyId;
+        var abc = this.convertModel.fromCurrencyId;
         alert("This is an alert..." + this.convertModel.currencyRates)
     }
 
-
-    GetToCurrency(toCurrency: string) {
-        debugger;
-        console.log(toCurrency);
-    }
+    //#region  input text box
 
     GetFromCurrencyValue(event: Event): string {
         debugger;
-        var value = (event.target as HTMLInputElement).value;
 
+        var result: number = this.ConvertRate(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
+
+        if (isNaN(result))
+            this.convertModel.toCurrency = "";
+        else
+            this.convertModel.toCurrency = result.toFixed(2).toString();
+
+        var value = (event.target as HTMLInputElement).value;
         console.log(value);
+
         return (event.target as HTMLInputElement).value;
     }
+
+    GetToCurrency(toCurrency: string) {
+        debugger;
+        var value = this.convertModel.toCurrency;
+        this.convertModel.fromCurrency = value;
+
+        console.log(toCurrency);
+    }
+
+    //#endregion
+
+    //#region Drop Down
+
     onFoodSelection1() {
         debugger;
         var vaalue = this.convertModel.currencyRates;
         console.log(this.convertModel.fromCurrencyId);
+    }
+
+    onFoodSelection2() {
+        debugger;
+        var vaalue = this.convertModel.currencyRates;
+        console.log(this.convertModel.fromCurrencyId);
+    }
+
+    //#endregion
+
+    private ConvertRate(from: number, toRateId: string): number {
+
+        var helper = new Helper();
+        var currency = helper.GetCurrencyById(this.convertModel.currencyRates, parseInt(toRateId));
+        var rate = currency.CurrencyRate;
+
+        var result = from * rate;
+
+        return result;
     }
 
 }

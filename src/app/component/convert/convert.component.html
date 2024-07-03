@@ -67,7 +67,8 @@
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
                         <mat-select [(value)]="convertModel.ToDefaultId" placeholder="Mode"
-                            [(ngModel)]="convertModel.toCurrencyId" name="toCurrencyId">
+                            [(ngModel)]="convertModel.toCurrencyId" name="toCurrencyId"
+                            (selectionChange)="onFoodSelection2()">
 
                             @for (currency of convertModel.currencyRates; track currency) {
                             <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>

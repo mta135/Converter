@@ -1,3 +1,4 @@
+import { numberAttribute } from "@angular/core";
 import { CurrencyRate } from "../models/currencyrate/currencyrate.model";
 
 export class Helper {
@@ -25,9 +26,11 @@ export class Helper {
         return Id;
     }
 
-    public GetRatesById(currencyRate: CurrencyRate[], Id: number): number | undefined {
-        var rate = currencyRate.find(x => x.Id == Id)?.CurrencyRate;
-        return rate;
-    }
+    public GetCurrencyById(currencyRate: CurrencyRate[], Id: number): CurrencyRate {
 
+        var currency: any;
+        currency = currencyRate.find(x => x.Id == Id);
+
+        return currency;
+    }
 }
