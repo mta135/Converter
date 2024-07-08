@@ -28,7 +28,8 @@
                     <mat-form-field class="mat-100-percent">
 
                         <input matInput [(ngModel)]="convertModel.fromCurrency" name="fromCurrency"
-                            [value]="convertModel.fromCurrency" (ngModelChange)="GetFromCurrencyValue($event)">
+                            [value]="convertModel.fromCurrency" (ngModelChange)="GetFromCurrencyValue($event)"
+                            autocomplete="off">
 
                     </mat-form-field>
                 </div>

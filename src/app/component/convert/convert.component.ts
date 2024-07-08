@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
 import { MaterialModule } from "../../helper/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
@@ -11,6 +11,7 @@ import { ConvertModel } from "../../models/convert/convert.model";
     templateUrl: 'convert.component.html',
     standalone: true,
     styleUrl: './convert.component.scss',
+
     imports: [MaterialModule, FormsModule, ReactiveFormsModule],
     providers: [CurrencyRateRepository]
 })
@@ -51,15 +52,27 @@ export class ConvertComponent {
     GetFromCurrencyValue(event: Event): void {
         debugger;
 
-        var value = Helper.IsDigit("ret");
+        if (this.convertModel.fromCurrency.length !== 0) {
 
+            if (!Helper.IsDigit(this.convertModel.fromCurrency)) {
+                this.ChangeDetector();
+                alert("A fost introdusa o litera. Se accepta doare cifre...");
+                this.convertModel.fromCurrency = "";
+                return;
+            }
+            else {
+                var result: number = this.ConvertRate(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
 
-        var result: number = this.ConvertRate(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
+                if (isNaN(result))
+                    this.convertModel.toCurrency = "";
+                else
+                    this.convertModel.toCurrency = result.toFixed(2).toString();
+            }
 
-        if (isNaN(result))
+        } else {
             this.convertModel.toCurrency = "";
-        else
-            this.convertModel.toCurrency = result.toFixed(2).toString();
+        }
+
     }
 
     GetToCurrency(toCurrency: string) {
@@ -97,6 +110,11 @@ export class ConvertComponent {
         var result = from * rate;
 
         return result;
+    }
+
+
+    private ChangeDetector() {
+        this.cdr.detectChanges();
     }
 
 }
