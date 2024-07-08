@@ -33,4 +33,17 @@ export class Helper {
 
         return currency;
     }
+
+
+
+
+    public static IsDigit(inputValue: string): boolean {
+
+        const numericValue = inputValue.replace(/[^0-9]/g, '');
+
+        if (numericValue.length !== 0)
+            return true
+
+        return false;
+    }
 }

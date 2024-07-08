@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { MaterialModule } from "../../helper/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
@@ -19,7 +19,7 @@ export class ConvertComponent {
 
     public convertModel = new ConvertModel();
 
-    constructor(currencyRateRepository: CurrencyRateRepository) {
+    constructor(currencyRateRepository: CurrencyRateRepository, private cdr: ChangeDetectorRef) {
         this.SetCurrencyRates(currencyRateRepository);
     }
 
@@ -48,8 +48,11 @@ export class ConvertComponent {
 
     //#region  input text box
 
-    GetFromCurrencyValue(event: Event): string {
+    GetFromCurrencyValue(event: Event): void {
         debugger;
+
+        var value = Helper.IsDigit("ret");
+
 
         var result: number = this.ConvertRate(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
 
@@ -57,11 +60,6 @@ export class ConvertComponent {
             this.convertModel.toCurrency = "";
         else
             this.convertModel.toCurrency = result.toFixed(2).toString();
-
-        var value = (event.target as HTMLInputElement).value;
-        console.log(value);
-
-        return (event.target as HTMLInputElement).value;
     }
 
     GetToCurrency(toCurrency: string) {
