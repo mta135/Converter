@@ -31,7 +31,6 @@ export class ConvertComponent {
             var helper = new Helper();
             this.convertModel.currencyRates = helper.ConvertToCurrencyRates(data);
             this.SetRatesDefaultValues(this.convertModel.currencyRates);
-            console.log(this.convertModel.currencyRates);
         });
     }
 
@@ -40,12 +39,6 @@ export class ConvertComponent {
 
         this.convertModel.FromDefaultId = helper.GetCurrencyRateId(currencyRate, "EUR");
         this.convertModel.ToDefaultId = helper.GetCurrencyRateId(currencyRate, "MDL");
-    }
-
-    TestClick() {
-        debugger;
-        var abc = this.convertModel.fromCurrencyId;
-        alert("This is an alert..." + this.convertModel.currencyRates)
     }
 
     //#region  input text box
@@ -73,12 +66,26 @@ export class ConvertComponent {
 
     }
 
-    GetToCurrency(toCurrency: string) {
-        debugger;
-        var value = this.convertModel.toCurrency;
-        this.convertModel.fromCurrency = value;
+    GetToCurrency() {
+        if (this.convertModel.toCurrency.length !== 0) {
 
-        console.log(toCurrency);
+            if (!Helper.IsDigit(this.convertModel.toCurrency)) {
+                this.ChangeDetector();
+                this.Alert("Acest simbol: (" + this.convertModel.toCurrency + ") nu este permis. Se accepta doar cifre. ", this.convertModel, ConvertTypeEnum.ToCurrency);
+                return;
+            }
+            else {
+                var resultFromCurrency: number = this.ConvertToCurrency(parseInt(this.convertModel.toCurrency), this.convertModel.fromCurrencyId);
+
+                if (isNaN(resultFromCurrency))
+                    this.ClearInputField(ConvertTypeEnum.FromCurrency, this.convertModel);
+                else
+                    this.convertModel.fromCurrency = resultFromCurrency.toFixed(2).toString();
+            }
+
+        } else {
+            this.ClearInputField(ConvertTypeEnum.FromCurrency, this.convertModel);
+        }
     }
 
     //#endregion
@@ -117,7 +124,7 @@ export class ConvertComponent {
         var currency = helper.GetCurrencyById(this.convertModel.currencyRates, parseInt(toRateId));
         var rate = currency.CurrencyRate;
 
-        var result = from * rate;
+        var result = from / rate;
 
         return result;
     }

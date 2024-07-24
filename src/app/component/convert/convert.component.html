@@ -37,7 +37,7 @@
                     <mat-form-field class="mat-100-percent">
 
                         <input matInput [(ngModel)]="convertModel.toCurrency" name="toCurrency"
-                            (ngModelChange)="GetToCurrency($event)">
+                            (ngModelChange)="GetToCurrency()" autocomplete="off">
 
                     </mat-form-field>
                 </div>
@@ -75,12 +75,6 @@
                             }
                         </mat-select>
                     </mat-form-field>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <button mat-raised-button color="accent" (click)="TestClick()">Accent Test</button>
                 </div>
             </div>
         </form>
