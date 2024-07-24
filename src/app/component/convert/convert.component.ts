@@ -59,7 +59,7 @@ export class ConvertComponent {
                 return;
             }
             else {
-                var result: number = this.ConvertRate(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
+                var result: number = this.ConvertFromCurrency(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
 
                 if (isNaN(result))
                     this.convertModel.toCurrency = "";
@@ -99,7 +99,7 @@ export class ConvertComponent {
 
     //#endregion
 
-    private ConvertRate(from: number, toRateId: string): number {
+    private ConvertFromCurrency(from: number, toRateId: string): number {
 
         var helper = new Helper();
         var currency = helper.GetCurrencyById(this.convertModel.currencyRates, parseInt(toRateId));
