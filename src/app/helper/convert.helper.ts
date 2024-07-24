@@ -1,4 +1,3 @@
-import { numberAttribute } from "@angular/core";
 import { CurrencyRate } from "../models/currencyrate/currencyrate.model";
 
 export class Helper {
@@ -33,9 +32,6 @@ export class Helper {
 
         return currency;
     }
-
-
-
 
     public static IsDigit(inputValue: string): boolean {
 

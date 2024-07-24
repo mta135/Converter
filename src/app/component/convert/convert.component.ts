@@ -49,15 +49,12 @@ export class ConvertComponent {
 
     //#region  input text box
 
-    GetFromCurrencyValue(event: Event): void {
-        debugger;
-
+    GetFromCurrencyValue(): void {
         if (this.convertModel.fromCurrency.length !== 0) {
 
             if (!Helper.IsDigit(this.convertModel.fromCurrency)) {
                 this.ChangeDetector();
-                alert("A fost introdusa o litera. Se accepta doare cifre...");
-                this.convertModel.fromCurrency = "";
+                this.Alert("A fost introdusa o litera. Se accepta dora cifre...", this.convertModel);
                 return;
             }
             else {
@@ -116,6 +113,13 @@ export class ConvertComponent {
     private ChangeDetector() {
         this.cdr.detectChanges();
     }
+
+
+    private Alert(alertText: string, convModel: ConvertModel): void {
+        alert(alertText);
+        convModel.fromCurrency = "";
+    }
+
 
 }
 
