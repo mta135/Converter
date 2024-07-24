@@ -55,7 +55,7 @@ export class ConvertComponent {
 
             if (!Helper.IsDigit(this.convertModel.fromCurrency)) {
                 this.ChangeDetector();
-                this.Alert("A fost introdusa o litera. Se accepta dora cifre...", this.convertModel, ConvertTypeEnum.FromCurrency);
+                this.Alert("Acest simbol: (" + this.convertModel.fromCurrency + ") nu este permis. Se accepta doar cifre. ", this.convertModel, ConvertTypeEnum.FromCurrency);
                 return;
             }
             else {
