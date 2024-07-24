@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { MaterialModule } from "../../helper/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
 import { CurrencyRate } from "../../models/currencyrate/currencyrate.model";
 import { Helper } from "../../helper/convert.helper";
 import { ConvertModel } from "../../models/convert/convert.model";
+import { ConvertTypeEnum } from "../../models/enums/convertype.enum";
 
 @Component({
     selector: "convert",
@@ -54,7 +55,7 @@ export class ConvertComponent {
 
             if (!Helper.IsDigit(this.convertModel.fromCurrency)) {
                 this.ChangeDetector();
-                this.Alert("A fost introdusa o litera. Se accepta dora cifre...", this.convertModel);
+                this.Alert("A fost introdusa o litera. Se accepta dora cifre...", this.convertModel, ConvertTypeEnum.FromCurrency);
                 return;
             }
             else {
@@ -115,12 +116,23 @@ export class ConvertComponent {
     }
 
 
-    private Alert(alertText: string, convModel: ConvertModel): void {
+    private Alert(alertText: string, convModel: ConvertModel, converType: ConvertTypeEnum): void {
         alert(alertText);
-        convModel.fromCurrency = "";
+        this.Clear(converType, convModel);
     }
 
+    private Clear(converType: ConvertTypeEnum, convModel: ConvertModel): void {
 
+        switch (converType) {
+            case ConvertTypeEnum.FromCurrency:
+                convModel.fromCurrency = "";
+                break;
+
+            case ConvertTypeEnum.ToCurrency:
+                convModel.toCurrency = "";
+        }
+
+    }
 }
 
 
