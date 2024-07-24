@@ -28,17 +28,15 @@ export class ConvertComponent {
     private SetCurrencyRates(currencyRateRepository: CurrencyRateRepository): void {
         currencyRateRepository.GetCurrencyRates().subscribe(data => {
 
-            var helper = new Helper();
-            this.convertModel.currencyRates = helper.ConvertToCurrencyRates(data);
+            this.convertModel.currencyRates = Helper.ConvertToCurrencyRates(data);
             this.SetRatesDefaultValues(this.convertModel.currencyRates);
         });
     }
 
     private SetRatesDefaultValues(currencyRate: CurrencyRate[]): void {
-        var helper = new Helper();
 
-        this.convertModel.FromDefaultId = helper.GetCurrencyRateId(currencyRate, "EUR");
-        this.convertModel.ToDefaultId = helper.GetCurrencyRateId(currencyRate, "MDL");
+        this.convertModel.FromDefaultId = Helper.GetCurrencyRateId(currencyRate, "EUR");
+        this.convertModel.ToDefaultId = Helper.GetCurrencyRateId(currencyRate, "MDL");
     }
 
     //#region  input text box

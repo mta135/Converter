@@ -2,7 +2,7 @@ import { CurrencyRate } from "../models/currencyrate/currencyrate.model";
 
 export class Helper {
 
-    ConvertToCurrencyRates(data: any): CurrencyRate[] {
+    public static ConvertToCurrencyRates(data: any): CurrencyRate[] {
         var currencyRates: CurrencyRate[] = [];
 
         var Id: number = 0;
@@ -20,7 +20,7 @@ export class Helper {
         return currencyRates;
     }
 
-    public GetCurrencyRateId(currencyRate: CurrencyRate[], name: string): number | undefined {
+    public static GetCurrencyRateId(currencyRate: CurrencyRate[], name: string): number | undefined {
         var Id = currencyRate.find(x => x.CurrencyName == name)?.Id;
         return Id;
     }
