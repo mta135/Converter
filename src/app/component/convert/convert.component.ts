@@ -59,12 +59,12 @@ export class ConvertComponent {
                 return;
             }
             else {
-                var result: number = this.ConvertFromCurrency(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
+                var resultFromCurrency: number = this.ConvertFromCurrency(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
 
-                if (isNaN(result))
+                if (isNaN(resultFromCurrency))
                     this.convertModel.toCurrency = "";
                 else
-                    this.convertModel.toCurrency = result.toFixed(2).toString();
+                    this.convertModel.toCurrency = resultFromCurrency.toFixed(2).toString();
             }
 
         } else {
