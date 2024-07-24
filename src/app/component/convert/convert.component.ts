@@ -62,13 +62,13 @@ export class ConvertComponent {
                 var resultFromCurrency: number = this.ConvertFromCurrency(parseInt(this.convertModel.fromCurrency), this.convertModel.toCurrencyId);
 
                 if (isNaN(resultFromCurrency))
-                    this.convertModel.toCurrency = "";
+                    this.ClearInputField(ConvertTypeEnum.ToCurrency, this.convertModel);
                 else
                     this.convertModel.toCurrency = resultFromCurrency.toFixed(2).toString();
             }
 
         } else {
-            this.convertModel.toCurrency = "";
+            this.ClearInputField(ConvertTypeEnum.ToCurrency, this.convertModel);
         }
 
     }
@@ -111,6 +111,18 @@ export class ConvertComponent {
     }
 
 
+    private ConvertToCurrency(from: number, toRateId: string): number {
+
+        var helper = new Helper();
+        var currency = helper.GetCurrencyById(this.convertModel.currencyRates, parseInt(toRateId));
+        var rate = currency.CurrencyRate;
+
+        var result = from * rate;
+
+        return result;
+    }
+
+
     private ChangeDetector() {
         this.cdr.detectChanges();
     }
@@ -118,10 +130,10 @@ export class ConvertComponent {
 
     private Alert(alertText: string, convModel: ConvertModel, converType: ConvertTypeEnum): void {
         alert(alertText);
-        this.Clear(converType, convModel);
+        this.ClearInputField(converType, convModel);
     }
 
-    private Clear(converType: ConvertTypeEnum, convModel: ConvertModel): void {
+    private ClearInputField(converType: ConvertTypeEnum, convModel: ConvertModel): void {
 
         switch (converType) {
             case ConvertTypeEnum.FromCurrency:
