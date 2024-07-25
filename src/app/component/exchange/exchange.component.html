@@ -1,40 +1,85 @@
-<h1>Exchange component !!!</h1>
+<h1>Convert Component is working !!! Mihai</h1>
 
+<mat-card class="example-card">
+    <mat-card-header>
 
-<div class="container">
-
-    <div class="card">
-        <div class="card-body padding-40-px">
+        <section>
             <div class="row">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="From" aria-label="from" autocomplete="off">
+                    <mat-card-title>
+                        <h1>Converter</h1>
+                    </mat-card-title>
+                </div>
+            </div>
+        </section>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <form>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Introdu suma...</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="mat-100-percent">
+
+                        <input matInput [(ngModel)]="convertModel.fromCurrency" name="fromCurrency"
+                            [value]="convertModel.fromCurrency" (ngModelChange)="GetFromCurrencyValue()"
+                            autocomplete="off">
+
+                    </mat-form-field>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="To" aria-label="to" autocomplete="off">
+                    <mat-form-field class="mat-100-percent">
+
+                        <input matInput [(ngModel)]="convertModel.toCurrency" name="toCurrency"
+                            (ngModelChange)="GetToCurrency()" autocomplete="off">
+
+                    </mat-form-field>
                 </div>
             </div>
 
+            <hr />
 
-
-            <div class="row mt-4">
-                <div class="col-md-16">
-                    <div class="btn-group" role="group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
-                            [checked]="Checked()" (click)="RadioGroupClick('MDL')">
-                        <label class="btn btn-outline-primary" for="btnradio1">MDL</label>
-
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
-
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
-                    </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Currency</label>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="mat-100-percent">
+                        <mat-select [(value)]="convertModel.FromDefaultId" placeholder="Mode"
+                            [(ngModel)]="convertModel.fromCurrencyId" name="fromCurrencyId"
+                            (selectionChange)="onFoodSelection1()">
 
-        </div>
-    </div>
+                            @for (currency of convertModel.currencyRates; track currency) {
+                            <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                    <mat-form-field class="mat-100-percent">
+                        <mat-select [(value)]="convertModel.ToDefaultId" placeholder="Mode"
+                            [(ngModel)]="convertModel.toCurrencyId" name="toCurrencyId"
+                            (selectionChange)="onFoodSelection2()">
+
+                            @for (currency of convertModel.currencyRates; track currency) {
+                            <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+
+    </mat-card-content>
 
 
-
-</div>
+</mat-card>

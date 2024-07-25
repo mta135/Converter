@@ -1,9 +1,18 @@
-.padding-40-px {
-    padding: 40px;
+.example-card {
+    margin: 2%;
+    text-align: left;
+    width: 50%;
+    margin-left: 25%;
+    border: 1px solid #4519acbd;
 }
 
-// .form-control:focus {
-//     // border-color: #6265e4 !important;
-//     border-width: 1px;
-//     // box-shadow: 0 0 5px rgba(98, 101, 228, 1) !important;
-// }
+
+
+.mat-50 {
+    width: 48%;
+    margin: 1%;
+}
+
+.mat-100-percent {
+    width: 100%;
+}
