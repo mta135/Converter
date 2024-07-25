@@ -1,6 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
-import { ChangeDetectorRef, Component } from "@angular/core";
+import { AfterContentChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
 import { Helper } from "../../helper/convert.helper";
 import { MaterialModule } from "../../helper/material.module";
 import { ExchangeModel } from "../../models/exchange/exchange.model";
@@ -10,18 +10,19 @@ import { ExchangeModel } from "../../models/exchange/exchange.model";
     templateUrl: 'exchange.component.html',
     standalone: true,
     styleUrl: './exchange.component.scss',
+
+
     imports: [MaterialModule, FormsModule, ReactiveFormsModule],
     providers: [CurrencyRateRepository]
 })
 
 
-export class ExchangeComponent {
+export class ExchangeComponent implements AfterContentChecked {
     public exchangeModel = new ExchangeModel();
 
     constructor(private cdr: ChangeDetectorRef) {
         this.SetCurrencies();
     }
-
     private SetCurrencies() {
         this.exchangeModel.Currencies = Helper.GetCurrencies();
         this.SetDefault();
@@ -58,9 +59,7 @@ export class ExchangeComponent {
 
     //#endregion
 
-
-    private ChangeDetector() {
+    ngAfterContentChecked(): void {
         this.cdr.detectChanges();
     }
-
 }
