@@ -1,16 +1,15 @@
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
-import { AfterContentChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
-import { Helper } from "../../helper/convert.helper";
+import { AfterContentChecked, ChangeDetectorRef, Component } from "@angular/core";
 import { MaterialModule } from "../../helper/material.module";
 import { ExchangeModel } from "../../models/exchange/exchange.model";
+import { CurrencyRepository } from "../../repository/currency.repository";
 
 @Component({
     selector: "convert",
     templateUrl: 'exchange.component.html',
     standalone: true,
     styleUrl: './exchange.component.scss',
-
 
     imports: [MaterialModule, FormsModule, ReactiveFormsModule],
     providers: [CurrencyRateRepository]
@@ -20,12 +19,14 @@ import { ExchangeModel } from "../../models/exchange/exchange.model";
 export class ExchangeComponent implements AfterContentChecked {
     public exchangeModel = new ExchangeModel();
 
-    constructor(private cdr: ChangeDetectorRef) {
-        this.SetCurrencies();
+    constructor(private cdr: ChangeDetectorRef, currencyRepository: CurrencyRepository) {
+        this.SetCurrencies(currencyRepository);
     }
-    private SetCurrencies() {
-        this.exchangeModel.Currencies = Helper.GetCurrencies();
-        this.SetDefault();
+    private SetCurrencies(currencyRepository: CurrencyRepository) {
+        currencyRepository.GetCurrency().subscribe(data => {
+            this.exchangeModel.Currencies = data;
+            this.SetDefault();
+        });
     }
 
     private SetDefault(): void {
