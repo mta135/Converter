@@ -21,16 +21,18 @@ export class ExchangeComponent {
 
     constructor(private cdr: ChangeDetectorRef) {
         this.GetCurrencies();
-        this.SetDefault(this.exchangeModel.Currencies);
     }
 
     private GetCurrencies() {
         this.exchangeModel.Currencies = Helper.GetCurrencies();
+        this.SetDefault(this.exchangeModel.Currencies);
     }
 
     private SetDefault(currencies: Currency[]): void {
-        this.exchangeModel.FromDefaultId = Helper.GetCurrencyId(currencies, "MDL");
-        this.exchangeModel.ToDefaultId = Helper.GetCurrencyId(currencies, "EUR");
+        setTimeout(() => {
+            this.exchangeModel.FromDefaultId = Helper.GetCurrencyId(currencies, "MDL");
+            this.exchangeModel.ToDefaultId = Helper.GetCurrencyId(currencies, "EUR");
+        }, 0);
     }
 
     //#region  input text box
