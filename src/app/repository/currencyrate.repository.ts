@@ -11,10 +11,12 @@ import { Observable } from "rxjs";
 export class CurrencyRateRepository {
 
     constructor(private service: CurrencyRateService) { }
+
     public GetCurrencyRates(): Observable<any> {
         return this.service.GetCurrencyRates();
     }
 
-
-    // comments
+    public GetCurrencyRate(currencyName: string): Observable<any> {
+        return this.service.GetCurrencyRate(currencyName);
+    }
 }

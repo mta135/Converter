@@ -14,4 +14,7 @@ export class CurrencyRateService {
         return this.http.get('https://open.er-api.com/v6/latest/EUR');
     }
 
+    public GetCurrencyRate(currencyName: string): Observable<any> {
+        return this.http.get('https://open.er-api.com/v6/latest/' + currencyName);
+    }
 }

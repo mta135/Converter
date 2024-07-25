@@ -34,6 +34,15 @@ export class Helper {
         return currency;
     }
 
+
+    public static GetRate(currencyRate: CurrencyRate[], currencyName: string): number | undefined {
+
+        var rate = currencyRate.find(x => x.CurrencyName == currencyName)?.CurrencyRate;
+
+        return rate;
+    }
+
+
     public static IsDigit(inputValue: string): boolean {
 
         const numericValue = inputValue.replace(/[^0-9]/g, '');
