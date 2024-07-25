@@ -1,10 +1,9 @@
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CurrencyRateRepository } from "../../repository/currencyrate.repository";
-import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { Helper } from "../../helper/convert.helper";
 import { MaterialModule } from "../../helper/material.module";
 import { ExchangeModel } from "../../models/exchange/exchange.model";
-import { Currency } from "../../models/exchange/currency.model";
 
 @Component({
     selector: "convert",
@@ -25,13 +24,13 @@ export class ExchangeComponent {
 
     private SetCurrencies() {
         this.exchangeModel.Currencies = Helper.GetCurrencies();
-        this.SetDefault(this.exchangeModel.Currencies);
+        this.SetDefault();
     }
 
-    private SetDefault(currencies: Currency[]): void {
+    private SetDefault(): void {
         setTimeout(() => {
-            this.exchangeModel.FromDefaultId = Helper.GetCurrencyId(currencies, "MDL");
-            this.exchangeModel.ToDefaultId = Helper.GetCurrencyId(currencies, "EUR");
+            this.exchangeModel.FromDefaultId = "MDL"
+            this.exchangeModel.ToDefaultId = "EUR";
         }, 0);
     }
 

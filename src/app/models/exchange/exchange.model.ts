@@ -3,9 +3,9 @@ import { Currency } from "./currency.model";
 export class ExchangeModel {
     public Currencies: Currency[] = [];
 
-    public FromDefaultId: number | undefined;
+    public FromDefaultId: string = "";
 
-    public ToDefaultId: number | undefined;
+    public ToDefaultId: string = "";
 
     public fromCurrency: string = "";
 

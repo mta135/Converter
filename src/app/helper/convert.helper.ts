@@ -26,11 +26,6 @@ export class Helper {
         return Id;
     }
 
-    public static GetCurrencyId(currencies: Currency[], name: string): number | undefined {
-        var Id = currencies.find(x => x.Name == name)?.Id;
-        return Id;
-    }
-
     public GetCurrencyById(currencyRate: CurrencyRate[], Id: number): CurrencyRate {
 
         var currency: any;
@@ -53,12 +48,12 @@ export class Helper {
     public static GetCurrencies(): Currency[] {
         var currencies: Currency[] = [];
 
-        currencies.push(new Currency(1, "MDL"));
-        currencies.push(new Currency(2, "USD"));
-        currencies.push(new Currency(3, "EUR"));
-        currencies.push(new Currency(4, "RUB"));
-        currencies.push(new Currency(5, "RON"));
-        currencies.push(new Currency(6, "UAH"));
+        currencies.push(new Currency("MDL", "MDL"));
+        currencies.push(new Currency("USD", "USD"));
+        currencies.push(new Currency("EUR", "EUR"));
+        currencies.push(new Currency("RUB", "RUB"));
+        currencies.push(new Currency("RON", "RON"));
+        currencies.push(new Currency("UAH", "UAH"));
 
         return currencies;
     }
