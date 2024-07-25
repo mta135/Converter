@@ -20,10 +20,10 @@ export class ExchangeComponent {
     public exchangeModel = new ExchangeModel();
 
     constructor(private cdr: ChangeDetectorRef) {
-        this.GetCurrencies();
+        this.SetCurrencies();
     }
 
-    private GetCurrencies() {
+    private SetCurrencies() {
         this.exchangeModel.Currencies = Helper.GetCurrencies();
         this.SetDefault(this.exchangeModel.Currencies);
     }
