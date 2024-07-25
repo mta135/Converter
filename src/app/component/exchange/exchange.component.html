@@ -1,4 +1,4 @@
-<h1>Convert Component is working !!! Mihai</h1>
+<h1>Exchenge Component is working... </h1>
 
 <mat-card class="example-card">
     <mat-card-header>
@@ -25,21 +25,21 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <mat-form-field class="mat-100-percent">
+                    <!-- <mat-form-field class="mat-100-percent">
 
                         <input matInput [(ngModel)]="convertModel.fromCurrency" name="fromCurrency"
                             [value]="convertModel.fromCurrency" (ngModelChange)="GetFromCurrencyValue()"
                             autocomplete="off">
 
-                    </mat-form-field>
+                    </mat-form-field> -->
                 </div>
                 <div class="col-md-6">
-                    <mat-form-field class="mat-100-percent">
+                    <!-- <mat-form-field class="mat-100-percent">
 
                         <input matInput [(ngModel)]="convertModel.toCurrency" name="toCurrency"
                             (ngModelChange)="GetToCurrency()" autocomplete="off">
 
-                    </mat-form-field>
+                    </mat-form-field> -->
                 </div>
             </div>
 
@@ -53,12 +53,12 @@
             <div class="row">
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
-                        <mat-select [(value)]="convertModel.FromDefaultId" placeholder="Mode"
-                            [(ngModel)]="convertModel.fromCurrencyId" name="fromCurrencyId"
-                            (selectionChange)="onFoodSelection1()">
+                        <mat-select [(ngModel)]="exchangeModel.fromCurrencyId" [(value)]="exchangeModel.FromDefaultId"
+                            placeholder="default" name="fromCurrencyId" (selectionChange)="onFoodSelection1()">
 
-                            @for (currency of convertModel.currencyRates; track currency) {
-                            <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>
+
+                            @for (currency of exchangeModel.Currencies; track currency) {
+                            <mat-option [value]="currency.Id">{{currency.Name}}</mat-option>
                             }
                         </mat-select>
                     </mat-form-field>
@@ -66,12 +66,12 @@
 
                 <div class="col-md-6">
                     <mat-form-field class="mat-100-percent">
-                        <mat-select [(value)]="convertModel.ToDefaultId" placeholder="Mode"
-                            [(ngModel)]="convertModel.toCurrencyId" name="toCurrencyId"
+                        <mat-select [(value)]="exchangeModel.ToDefaultId" placeholder="Mode"
+                            [(ngModel)]="exchangeModel.toCurrencyId" name="toCurrencyId"
                             (selectionChange)="onFoodSelection2()">
 
-                            @for (currency of convertModel.currencyRates; track currency) {
-                            <mat-option [value]="currency.Id">{{currency.CurrencyName}}</mat-option>
+                            @for (currency of exchangeModel.Currencies; track currency) {
+                            <mat-option [value]="currency.Id">{{currency.Name}}</mat-option>
                             }
                         </mat-select>
                     </mat-form-field>
