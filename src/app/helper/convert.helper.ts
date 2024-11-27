@@ -53,17 +53,4 @@ export class Helper {
         return false;
     }
 
-
-    public static GetCurrencies(): Currency[] {
-        var currencies: Currency[] = [];
-
-        currencies.push(new Currency("MDL", "MDL"));
-        currencies.push(new Currency("USD", "USD"));
-        currencies.push(new Currency("EUR", "EUR"));
-        currencies.push(new Currency("RUB", "RUB"));
-        currencies.push(new Currency("RON", "RON"));
-        currencies.push(new Currency("UAH", "UAH"));
-
-        return currencies;
-    }
 }

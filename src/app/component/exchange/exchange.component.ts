@@ -19,18 +19,15 @@ import { Helper } from "../../helper/convert.helper";
 
 export class ExchangeComponent implements AfterContentChecked {
     public exchangeModel = new ExchangeModel();
-    private currencyRateRepository: CurrencyRateRepository;
 
-    constructor(private cdr: ChangeDetectorRef, currencyRepository: CurrencyRepository, currencyRateRepository: CurrencyRateRepository) {
-        this.SetCurrencies(currencyRepository);
-        this.currencyRateRepository = currencyRateRepository;
 
+    constructor(private cdr: ChangeDetectorRef, private currencyRep: CurrencyRepository, private currencyRateRep: CurrencyRateRepository) {
+        this.SetCurrencies();
         this.SetFromCurrencyRates("MDL", "EUR");
     }
 
-    private SetCurrencies(currencyRepository: CurrencyRepository) {
-
-        currencyRepository.GetCurrency().subscribe(data => {
+    private SetCurrencies() {
+        this.currencyRep.GetCurrency().subscribe(data => {
             this.exchangeModel.Currencies = data;
             this.SetDefault();
         });
@@ -73,8 +70,7 @@ export class ExchangeComponent implements AfterContentChecked {
 
     private SetFromCurrencyRates(From: string, To: string) {
 
-        this.currencyRateRepository.GetCurrencyRate(From).subscribe(data => {
-
+        this.currencyRateRep.GetCurrencyRate(From).subscribe(data => {
             this.exchangeModel.currencyRates = Helper.ConvertToCurrencyRates(data);
             this.exchangeModel.Rate = Helper.GetRate(this.exchangeModel.currencyRates, To);
 
